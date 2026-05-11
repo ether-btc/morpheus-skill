@@ -1,2 +1,0 @@
-# Ensure symlinks are preserved on checkout (requires git config core.symlinks true)
-tests -text
