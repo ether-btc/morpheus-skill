@@ -12,7 +12,7 @@ if [[ ! -f "$MORPHEUS_DIR/.cookie" ]]; then
   echo "❌ .cookie file not found. Is the proxy-router running?" >&2
   exit 1
 fi
-COOKIE_PASS=$(cat "$MORPHEUS_DIR/.cookie" | cut -d: -f2)
+COOKIE_PASS=$(< "$MORPHEUS_DIR/.cookie" cut -d: -f2)
 
 echo "🦋 Morpheus Balance Report"
 echo "=========================="

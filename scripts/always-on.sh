@@ -42,7 +42,7 @@ fi
 # Check for sudo
 if [[ $EUID -ne 0 ]]; then
   echo -e "${RED}Error: This script requires sudo to modify power settings.${NC}"
-  echo "Run: sudo bash $0 $@"
+  echo "Run: sudo bash $0 $*"
   exit 1
 fi
 

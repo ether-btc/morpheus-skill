@@ -12,7 +12,7 @@ version: 2.0.0
 
 **Architecture:** Plan once → decompose → execute in 15-minute cycles → each cycle does ONE step → state persists in files between runs.
 
-**Why v2:** V1 ran everything in one long session. One timeout killed the whole shift. V2 is a state machine — errors get logged, skipped, and retried. 32 cycles per shift, each learning from the last.
+**Why v2:** V1 ran everything in one long session. One timeout killed the whole shift. V2 is a state machine — errors get logged, skipped, and retried. Up to 31 cycles per shift (2:15 PM–9:45 PM), each learning from the last.
 
 ---
 
@@ -36,7 +36,7 @@ shifts/
 # Afternoon Shift — 2026-02-22
 Approved by: user | Approved at: 2:15 PM CST
 Shift window: 2:00 PM – 10:00 PM CST
-Cycles remaining: ~30
+Cycles remaining: ~31 (2:15 PM – 9:45 PM)
 
 ## Task 1: API migration plan [P1]
 - [x] Step 1.1: Read current proxy-router config and session economics — DONE (cycle 1)
@@ -63,6 +63,7 @@ Next target: Step 1.2
 - `[!]` — Blocked (with reason — will be retried after dependencies clear)
 - `[~]` — In progress (claimed by current cycle, prevents double-execution)
 - `[-]` — Skipped (manually removed or deprioritized)
+- `[carryover]` — Carried forward from previous shift (treated as `[ ]` for execution)
 
 ### context.md Format
 
@@ -112,10 +113,11 @@ Next target: Step 1.2
   "skipped": 0,
   "cyclesRun": 1,
   "lastCycleAt": "2026-02-22T20:15:00Z",
-  "nightAutoApproved": false,
-  "carryoverFromShift": null
+  "nightAutoApproved": false
 }
 ```
+
+**Valid `status` values:** `executing`, `awaiting_approval`, `completed`, `cancelled`. `idle` is deprecated — do not use.
 
 ---
 
@@ -253,7 +255,7 @@ Each cycle is an **isolated session** — no memory of previous cycles except wh
 
 ```
 1. READ shifts/state.json
-   → If status is "completed", "cancelled", "idle", or "awaiting_approval": reply HEARTBEAT_OK (no-op)
+   → If status is "completed", "cancelled", or "awaiting_approval": reply HEARTBEAT_OK (no-op)
    → If status is "executing": continue
 
 2. READ shifts/tasks.md
@@ -282,15 +284,17 @@ Each cycle is an **isolated session** — no memory of previous cycles except wh
    → Blocked: [!] Step N.N: description — BLOCKED (cycle X): reason why
    → If blocked, check if next [ ] step has no dependency on this one → continue to it
 
-8. UPDATE state.json
+8. BEFORE CLAIMING ANY SECOND STEP: repeat the stale-claim sweep (step 4). Each step added to the queue must pass the stale-claim check independently. The stale-claim guard only runs once per cycle — re-run it before the second step.
+
+9. UPDATE state.json
    → Increment cyclesRun, update completed/blocked counts, lastCycleAt
 
-9. UPDATE shifts/context.md (if learned something new)
+10. UPDATE shifts/context.md (if learned something new)
    → New pitfall discovered? Add it.
    → Found a useful command? Note it.
    → This is how cycles teach future cycles.
 
-10. IF time permits in this cycle, take the NEXT available [ ] step
+11. IF time permits in this cycle, take the NEXT available [ ] step
    → But only if the current step took <5 minutes
    → Never take more than 2 steps per cycle
 ```
