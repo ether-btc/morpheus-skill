@@ -101,3 +101,7 @@ All packs use these placeholders — replace before registering:
 | `YOUR_GITHUB_REPOS` | `owner/repo1, owner/repo2` | Developer pack |
 | `YOUR_CITY` | `Austin, TX` | Family/weather jobs |
 | `YOUR_TOPICS` | `AI, crypto, space` | Briefing jobs |
+
+## `no_agent` Silent Failure Pattern
+
+`no_agent=True` cron jobs silently suppress delivery when a script exits 0 with empty stdout. See `references/no-agent-heartbeat-pattern.md` for the full analysis, the `heartbeat_interval_ticks` design, and the user-validated RSS pre-scan hardening pattern.
