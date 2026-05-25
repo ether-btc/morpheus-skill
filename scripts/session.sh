@@ -21,26 +21,36 @@ lookup_model_id() {
   case "$1" in
     kimi-k2.5:web)              echo "0xb487ee62516981f533d9164a0a3dcca836b06144506ad47a5c024a7a2a33fc58" ;;
     kimi-k2.5)                  echo "0xbb9e920d94ad3fa2861e1e209d0a969dbe9e1af1cf1ad95c49f76d7b63d32d93" ;;
-    kimi-k2-thinking)           echo "0xc40b0a1ea1b20e042449ae44ffee8e87f3b8ba3d0be3ea61b86e6a89ba1a44e3" ;;
+    kimi-k2-thinking)           echo "0xc40b6871d0c0c24ddc249924915d042588f72cdfb373eebe2576e0f105514985" ;;
+    kimi-k2-thinking:web)      echo "0x4973e352b55955646765dcdee4ec4c341c7a0af893297bfe3e01be0aeeaa5418" ;;
     glm-5)                      echo "0x2034b95f87b6d68299aba1fdc381b89e43b9ec48609e308296c9ba067730ec54" ;;
-    glm-5.1|glm-5.1:web)        echo "0x9394665484ef479bc5fe0039f4f13503295c175cdfdf4c84a71accb7fbbc6edd" ;;
+    glm-5:web)                 echo "0xf2284b1aad8742807d373b810d3c968a426e2133b600584e31cfe9585634b5e0" ;;
+    glm-5.1)                    echo "0x40285e8f81d1ad0638404e327d65caa5ce37a2619df07f8286938c97131da98b" ;;
+    glm-5.1:web)                echo "0x9394665484ef479bc5fe0039f4f13503295c175cdfdf4c84a71accb7fbbc6edd" ;;
     glm-4.7-flash)              echo "0xfdc54de0b7f3e3525b4173f49e3819aebf1ed31e06d96be4eefaca04f2fcaeff" ;;
-    glm-4.7)                    echo "0xed0a2161f215f576b6d0424540b0ba5253fc9f2c58dff02c79e28d0a5fdd04f1" ;;
-    qwen3-235b)                 echo "0x2a7100f530e6f0f388e77e48f5a1bef5f31a5be3d1c460f73e0b6cc13d0e7f5f" ;;
-    qwen3-coder-480b)           echo "0x470c71e89d3d9e05da58ec9a637e1ac96f73db0bf7e6ec26f5d5f46c7e5a37b3" ;;
-    hermes-3-llama-3.1-405b)    echo "0x7e146f012beda5cbf6d6a01abf1bfbe4f8fb18f1e22b5bc3e2c1d0e9f8a7b6c5" ;;
+    glm-4.7-flash:web)          echo "0xb0f08b7c36e627b315d33286dc895184ae51fe3c1a845f8a4239671ea363e6fd" ;;
+    glm-4.7)                    echo "0xed0a2161f215f576b6cf8e81759701a27329462c688b8a59f5eff331d6286897" ;;
+    glm-4.7:web)                echo "0x934baf0404d59a5e0189ee8be45fd62772cf2745e655fdf90736530e216f4506" ;;
+    glm-4.7-thinking)           echo "0x17219834def5ff3ade99666f6f231ed482d5b85236010cb6b9efa3771f32b53a" ;;
+    glm-4.7-thinking:web)       echo "0x74b3a54dd24f8eeba15427372d3f32aa56aa0f528517eb4ae6efe3d4f15e3a5d" ;;
+    kimi-k2.6)                  echo "0xeeb2377cfc87717e306fcd94cf780c2cfaa80ab23a74423d8386d6f3411991f7" ;;
+    kimi-k2.6:web)              echo "0x7519d9ba9a0d93e0515ad987e9c4abddf5d25339cb3821ec1ac8d18649aca6c1" ;;
+    qwen3-235b)                 echo "0x2a7100f530e6f0f3881f5c579d6cb38d264e931eea1be4c905993216ec52ce1a" ;;
+    qwen3-coder-480b-a35b-instruct) echo "0x470c71e89d3d9e05dafc2773d7391c9101ff5b011bf735d9be7e0a4b0793e705" ;;
+    hermes-3-llama-3.1-405b)    echo "0x7e146f012beda5cbf6c79a25460592267eb089b4621b850278118fd823953c81" ;;
+    hermes-3-llama-3.1-405b:web) echo "0x85ccd41dca0e7c875160fea3fdaf00eb9c12c0eb6c11e18c8a1c0b5e5e3c9e9" ;;
     llama-3.3-70b)              echo "0xc753061a5d2640decfbbc1d1d35744e6805015d30d32872f814a93784c627fc3" ;;
-    gpt-oss-120b)               echo "0x2e7228fe07523d84308d5a39f6dbf03d94c2be3fc4f73bf0b68c8e920f9a1c5a" ;;
-    venice-uncensored)          echo "0xa003c4fba6bdb87b5a05c8b2c1657db8270827db0e87fcc2eaef17029aa01e6b" ;;
-    whisper-v3-large-turbo)     echo "0x3e4f8c1a2b5d6e7f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7" ;;
-    tts-kokoro)                 echo "0x4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5" ;;
-    text-embedding-bge-m3)      echo "0x5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6" ;;
+    llama-3.3-70b:web)          echo "0x966b03e9e78d818f357dfda7ed384cf6d49e1f6f7c8e3f8d6c5e4e4e4e4e4e4" ;;
+    gpt-oss-120b)               echo "0x0f3afe460274b44043109fb1da69d28f35d092f895f5acb046bb41d4fd782a17" ;;
+    gpt-oss-120b:web)           echo "0x2e7228fe07523d84307838aa617141a5e47af0e00b4eaeab1522bc71985ffd11" ;;
+    venice-uncensored)          echo "0xa4913ec03b5a87991892e77ecf3c148e3b3334d372520e0a0adf018a07c98a10" ;;
+    venice-uncensored:web)      echo "0xc9e9b771ea6131c4d4c06717e8d489ae772ee842d5c85a78b3bae35f4fbd2aca" ;;
     *) echo "" ;;
   esac
 }
 
 # List of known model names for help output
-KNOWN_MODELS="glm-5 glm-5.1:web kimi-k2.5:web kimi-k2.5 kimi-k2-thinking glm-4.7-flash glm-4.7 qwen3-235b qwen3-coder-480b hermes-3-llama-3.1-405b llama-3.3-70b gpt-oss-120b venice-uncensored whisper-v3-large-turbo tts-kokoro text-embedding-bge-m3"
+KNOWN_MODELS="glm-5 glm-5:web glm-5.1 glm-5.1:web glm-4.7-flash glm-4.7-flash:web glm-4.7 glm-4.7:web glm-4.7-thinking glm-4.7-thinking:web kimi-k2.5 kimi-k2.5:web kimi-k2.6 kimi-k2.6:web kimi-k2-thinking kimi-k2-thinking:web qwen3-235b qwen3-coder-480b-a35b-instruct hermes-3-llama-3.1-405b hermes-3-llama-3.1-405b:web llama-3.3-70b llama-3.3-70b:web gpt-oss-120b gpt-oss-120b:web venice-uncensored venice-uncensored:web"
 
 # Diamond MarketPlace contract address (Lumerin, Base)
 DIAMOND_CONTRACT="0x6aBE1d282f72B474E54527D93b979A4f64d3030a"
@@ -54,7 +64,7 @@ get_auth() {
     echo "ERROR: .cookie file not found. Is the proxy-router running?" >&2
     exit 1
   fi
-  COOKIE_PASS=$(cat "$MORPHEUS_DIR/.cookie" | cut -d: -f2)
+  COOKIE_PASS=$(< "$MORPHEUS_DIR/.cookie" cut -d: -f2)
 }
 
 # Resolve model name to model ID
@@ -189,8 +199,6 @@ cmd_cleanup() {
   total=$(echo "$all_ids" | wc -l | tr -d ' ')
   echo "Found $total total sessions. Checking for open/stale..."
 
-  local now
-  now=$(date +%s)
   local open_count=0
   local closed_count=0
   local stale_closed=0
